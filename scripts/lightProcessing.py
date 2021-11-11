@@ -19,8 +19,9 @@ redPike = np.argmax(calibrationArray)
 refRedPike = 610.0
 refBluePike = 490.0
 length = (650 * (refRedPike - refBluePike))/(redPike - bluePike)
-maxLength = (bluePike * length)/650 + refBluePike
-minLength = refBluePike - (bluePike * length)/650
+maxLength = (refRedPike * (redPike - bluePike) + (650 - redPike) * (refRedPike - refBluePike))/(redPike - bluePike)
+minLength = maxLength - length
+print(minLength, maxLength)
 maxX = math.ceil(maxLength / 20.0) * 20
 minX = math.floor(minLength / 20.0) * 20
 maxIntensity = max(np.amax(whiteArray), np.amax(blueArray), np.amax(redArray), np.amax(yellowArray), np.amax(greenArray))
