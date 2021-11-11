@@ -11,20 +11,20 @@ yellowArray = readIntensity("light/data/yellow-tungsten.png", "light/plots/yello
 greenArray = readIntensity("light/data/green-tungsten.png", "light/plots/green-tungsten.png", "лампа накаливания", "зелёный лист")
 whiteArray = readIntensity("light/data/white-tungsten.png", "light/plots/white-tungsten.png", "лампа накаливания", "белый лист")
 
-redPike = np.argmax(calibrationArray)
-for i in range (redPike - 20, redPike + 20):
+bluePike = np.argmax(calibrationArray)
+for i in range (bluePike - 20, bluePike + 20):
     calibrationArray[i] = 0
-greenPike = np.argmax(calibrationArray)
+redPike = np.argmax(calibrationArray)
 
 refRedPike = 610.0
-refGreenPike = 545.0
-length = (650 * (refRedPike - refGreenPike))/(redPike - greenPike)
-maxLength = (greenPike * length)/650 + refGreenPike
-minLength = refGreenPike - (greenPike * length)/650
+refBluePike = 490.0
+length = (650 * (refRedPike - refBluePike))/(redPike - bluePike)
+maxLength = (bluePike * length)/650 + refBluePike
+minLength = refBluePike - (bluePike * length)/650
 maxX = math.ceil(maxLength / 20.0) * 20
 minX = math.floor(minLength / 20.0) * 20
 maxIntensity = max(np.amax(whiteArray), np.amax(blueArray), np.amax(redArray), np.amax(yellowArray), np.amax(greenArray))
-maxY = math.ceil(maxIntensity / 10.0) * 10
+maxY = math.ceil(maxIntensity / 20.0) * 20
 minY = -7
 waveLengthArray = np.arange(minLength, maxLength, (maxLength - minLength)/calibrationArray.size)
 
@@ -92,7 +92,7 @@ ax.grid(which = 'minor', c = '#696969', linestyle = '--', linewidth = 1, alpha =
 
 plt.title('Интенсивность отражённого излучения', loc = 'center', fontsize = 24, wrap = True)
 plt.xlabel('Длина волны [нм]', fontsize = 18)
-plt.ylabel('Яркость', fontsize = 18)
+plt.ylabel('Альбедо', fontsize = 18)
 plt.legend(fontsize = 14)
 
 plt.savefig("light/plots/albedos.png")

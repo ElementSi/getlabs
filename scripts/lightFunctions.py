@@ -4,7 +4,7 @@ import imageio
 
 def readIntensity(photoName, plotName, lamp, surface):
     photo = imageio.imread(photoName)
-    cut = photo[400:1050, 1130:1290, 0:3].swapaxes(0, 1)
+    cut = photo[450:1100, 1170:1340, 0:3].swapaxes(0, 1)
     intensity = np.mean(cut, axis=(2, 0))
 
     fig = plt.figure(figsize=(10, 3), dpi=200)
