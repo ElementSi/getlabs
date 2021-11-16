@@ -65,7 +65,6 @@ ax.set(facecolor = "#c8c8c9")
 
 ones = np.ones(whiteArray.size, dtype=float)
 whiteArray = whiteArray + ones
-
 blueAlbedoArray = blueArray/whiteArray
 redAlbedoArray = redArray/whiteArray
 yellowAlbedoArray = yellowArray/whiteArray
