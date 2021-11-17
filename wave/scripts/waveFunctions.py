@@ -46,8 +46,18 @@ def waitForOpen():
 #   Save and read data
 ########################################
 
-def save(samples, start, finish):
-    filename = 'wave-data {}.txt'.format(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(start)))
+def save_static(depth, samples, start, finish):
+    filename = "wave/data/{} mm.txt".format(depth)
+
+    with open(filename, "w") as outfile:
+        outfile.write('- Wave Lab\n')
+        outfile.write('- Date: {}\n'.format(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))))
+        outfile.write('- Duration: {:.2f} s\n\n'.format(finish - start))
+        
+        np.savetxt(outfile, np.array(samples).T, fmt='%d')
+
+def save_dynamic(depth, samples, start, finish):
+    filename = "wave/data/wave {} mm.txt".format(depth)
 
     with open(filename, "w") as outfile:
         outfile.write('- Wave Lab\n')
@@ -61,6 +71,6 @@ def read(filename):
         lines = f.readlines()
 
     duration = float(lines[2].split()[2])
-    samples = [int(i) for i in lines[4:]]
+    samples = np.asarray(lines[4:], dtype=int)
     
     return samples, duration, len(samples)
