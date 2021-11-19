@@ -1,6 +1,6 @@
-#import spidev
+import spidev
 import time
-#import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 import numpy as np
 
 
@@ -8,36 +8,36 @@ import numpy as np
 #   Open, use and close SPI ADC
 ########################################
 
-#spi = spidev.SpiDev()
+spi = spidev.SpiDev()
 
 def initSpiAdc():
-#    spi.open(0, 0)
-#    spi.max_speed_hz = 1600000
+    spi.open(0, 0)
+    spi.max_speed_hz = 1600000
     print ("SPI for ADC have been initialized")
 
 def deinitSpiAdc():
-#    spi.close()
+    spi.close()
     print ("SPI cleanup finished")
 
 def getAdc():
-#    adcResponse = spi.xfer2([0, 0])
-#    return ((adcResponse[0] & 0x1F) << 8 | adcResponse[1]) >> 1
+    adcResponse = spi.xfer2([0, 0])
+    return ((adcResponse[0] & 0x1F) << 8 | adcResponse[1]) >> 1
 
 
 ########################################
 #   Setup, use and cleanup GPIO
 ########################################
 
-#def waitForOpen():
-#    GPIO.setmode(GPIO.BCM)
-#    GPIO.setup(2, GPIO.IN)
+def waitForOpen():
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(2, GPIO.IN)
 
     print('GPIO initialized. Wait for door opening...')
 
-#    while GPIO.input(2) < 1:
-#        pass
+    while GPIO.input(2) < 1:
+        pass
 
-#    GPIO.cleanup()
+    GPIO.cleanup()
     print('The door is open. GPIO has been cleaned up. Start sampling...')
 
 

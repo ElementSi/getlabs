@@ -156,4 +156,3 @@ plt.title('Уровень воды в кювете после открытия �
 plt.xlabel('Время [с]', fontsize = 18)
 plt.ylabel('Уровень воды [мм]', fontsize = 18)
 plt.legend(fontsize = 20)
-plt.savefig("wave/plots/velocity_120.png")
