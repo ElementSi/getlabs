@@ -13,6 +13,8 @@ def read(filename):                  # ФУКНЦИЯ ИЗ ДРУГОГО ФАЙ
     
     return samples, duration, len(samples)
 
+LENGTH = 1.66 # расстояние
+
 # чтение данных ацп для калибровки
 
 samples_20, duration_20, length_20 = b.read("wave/data/20 mm.txt")
@@ -88,6 +90,7 @@ plt.title('Уровень воды в кювете после открытия �
 plt.xlabel('Время [с]', fontsize = 18)
 plt.ylabel('Уровень воды [мм]', fontsize = 18)
 plt.legend(fontsize = 20)
+plt.text(11, 90, "L = {} [м]\nt = {} [с]\nV = {} [м/c]".format(LENGTH, round(time_res_40[num_devide_40], 2), round(LENGTH/time_res_40[num_devide_40], 2)), size=30, bbox={"boxstyle": "round, pad=0.1", "facecolor": "white"})
 plt.savefig("wave/plots/velocity_40.png")
 
 # ----------------------------- график для 80 мм -----------------------------------
@@ -122,6 +125,7 @@ plt.title('Уровень воды в кювете после открытия �
 plt.xlabel('Время [с]', fontsize = 18)
 plt.ylabel('Уровень воды [мм]', fontsize = 18)
 plt.legend(fontsize = 20)
+plt.text(11, 90, "L = {} [м]\nt = {} [с]\nV = {} [м/c]".format(LENGTH, round(time_res_80[num_devide_80], 2), round(LENGTH/time_res_80[num_devide_80], 2)), size=30, bbox={"boxstyle": "round, pad=0.1", "facecolor": "white"})
 plt.savefig("wave/plots/velocity_80.png")
 
 # ---------------------------- график для 120 мм --------------------------
@@ -156,3 +160,5 @@ plt.title('Уровень воды в кювете после открытия �
 plt.xlabel('Время [с]', fontsize = 18)
 plt.ylabel('Уровень воды [мм]', fontsize = 18)
 plt.legend(fontsize = 20)
+plt.text(11, 90, "L = {} [м]\nt = {} [с]\nV = {} [м/c]".format(LENGTH, round(time_res_120[num_devide_120], 2), round(LENGTH/time_res_120[num_devide_120], 2)), size=30, bbox={"boxstyle": "round, pad=0.1", "facecolor": "white"})
+plt.savefig("wave/plots/velocity_120.png")
