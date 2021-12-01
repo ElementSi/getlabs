@@ -1,0 +1,2 @@
+Absolute humidity = 0.0089 kg/m3
+Temperature = 23.3 C
