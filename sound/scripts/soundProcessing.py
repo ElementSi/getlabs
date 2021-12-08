@@ -10,15 +10,17 @@ dalton = 1.661 * (10 ** -27)
 p0 = 100000
 length = 1.158
 
-print("Enter the limit of co2 concentration on graph")
+print("Enter the limit of co2 concentration on graph [%]")
 co2_xMax = int(input())
 
-print("Enter the time of sound propagation in atmospheric air")
+print("Enter the time of sound propagation in atmospheric air [ms]")
 time_1 = float(input())
+time_1 = time_1 / 1000
 speed_1 = length / time_1
 
-print("Enter the time of sound propagation in air saturated with co2")
+print("Enter the time of sound propagation in air saturated with co2 [ms]")
 time_2 = float(input())
+time_2 = time_2 / 1000
 speed_2 = length / time_2
 
 with open("sound/data/conditions.txt") as f:
